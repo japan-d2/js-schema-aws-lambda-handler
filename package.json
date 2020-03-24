@@ -1,6 +1,6 @@
 {
   "name": "@japan-d2/schema-aws-lambda-handler",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "fully-typesafe AWS Lambda handler definition and specification with automatic request validation based on @japan-d2/schema-api-endpoint",
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
@@ -25,23 +25,23 @@
     "node": ">=10.4.0"
   },
   "dependencies": {
-    "@japan-d2/schema": "^0.0.11",
-    "@japan-d2/schema-api-endpoint": "0.0.7",
+    "@japan-d2/schema": "^0.0.12",
+    "@japan-d2/schema-api-endpoint": "0.0.9",
     "jsonschema": "^1.2.5"
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.46",
-    "@types/jest": "^25.1.2",
+    "@types/jest": "latest",
     "@types/node": "^13.7.1",
-    "@typescript-eslint/eslint-plugin": "^2.19.2",
-    "@typescript-eslint/parser": "^2.19.2",
+    "@typescript-eslint/eslint-plugin": "^2.25.0",
+    "@typescript-eslint/parser": "^2.25.0",
     "eslint": "^6.8.0",
     "eslint-config-standard": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
-    "jest": "^25.1.0",
+    "jest": "latest",
     "ts-jest": "^25.2.0",
     "ts-node": "^8.6.2",
     "typescript": "^3.7.5"
