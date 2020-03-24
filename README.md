@@ -58,7 +58,8 @@ function eventModifier (event: InputType): Omit<InputType, 'body'> & ParameterTy
   }
 }
 
-// the `resultBuilder` converts the designed response parameters into parameters that affect the real world in the case of successful processing.
+// the `resultBuilder` converts the designed response parameters into parameters
+// that affect the real world in the case of successful processing.
 // Remember to specify the fully return type to give more hints to the factory function.
 function resultBuilder (input: ResultInputType): ResultType {
   return {
@@ -101,20 +102,12 @@ export const endpoint = endpointFactory(endpointSettings)
 
 ```endpoints/schema/base.ts
 // endpoints/schema/base.ts
-import { endpointSchemaFactory, defaultKeyNameMap } from '@japan-d2/schema-api-endpoint'
+import { endpointSchemaFactory } from '@japan-d2/schema-api-endpoint'
 
-export const endpoint = endpointSchemaFactory({
-  keyNameMap: {
-    ...defaultKeyNameMap,
-    request: {
-      ...defaultKeyNameMap.request,
-      query: 'queryStringParameters',
-    },
-  },
-})
+export const endpoint = endpointSchemaFactory({})
 ```
 
-2. schema definition
+1. endpoint schema definition
 
 ```endpoints/schema/createUser.ts
 // endpoints/schema/createUser.ts
@@ -128,9 +121,12 @@ export const schema = {
         description: 'email address',
         format: 'email',
       }),
+      // query: d => d.string('...'),
+      // headers: d => d.string('...'),
     },
     response: {
       body: d => d.string('id'),
+      // headers: d => d.string('...'),
     },
   }),
 }
