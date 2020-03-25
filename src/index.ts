@@ -75,9 +75,9 @@ interface Endpoint <
 
   defaultSettings: Partial<Settings<EventInner, ResultOuter>>;
 
-  extend <F extends EventInner> (
-    defaultSettings?: Partial<Settings<F, ResultOuter>>
-  ): Endpoint<EventOuter, F, ResultOuter, O>;
+  extend <F> (
+    defaultSettings?: Partial<Settings<EventInner & F, ResultOuter>>
+  ): Endpoint<EventOuter, EventInner & F, ResultOuter, O>;
 }
 
 export function endpointFactory <EventOuter, EventInner, ResultOuter> (
