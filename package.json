@@ -1,6 +1,6 @@
 {
   "name": "@japan-d2/schema-aws-lambda-handler",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "fully-typesafe AWS Lambda handler definition and specification with automatic request validation based on @japan-d2/schema-api-endpoint",
   "main": "lib/index.js",
   "type": "lib/index.d.ts",
