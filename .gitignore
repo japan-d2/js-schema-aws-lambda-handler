@@ -108,3 +108,6 @@ package-lock.json
 
 # lib
 /lib/
+
+# lockfile
+yarn.lock
