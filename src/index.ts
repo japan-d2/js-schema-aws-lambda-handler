@@ -121,7 +121,15 @@ export function endpointFactory <EventOuter, EventInner, ResultOuter> (
       const event = settings.eventModifier(rawEvent)
 
       if (callbacks.onEvent) {
-        callbacks.onEvent(event, rawContext, schema)
+        try {
+          callbacks.onEvent(event, rawContext, schema)
+        } catch (error) {
+          if (callbacks.onUnhandledError) {
+            return callbacks.onUnhandledError(event, error, schema)
+          } else {
+            throw error
+          }
+        }
       }
 
       const context: CustomContext<{}, ResultOuter> = {
