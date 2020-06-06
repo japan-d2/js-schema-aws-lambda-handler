@@ -182,3 +182,93 @@ describe('endpoint with custom error handler', () => {
     })
   })
 })
+
+describe('handle error in custom error handler', () => {
+  const endpoint = endpointBase.extend({
+    callbacks: {
+      onResult (_event, response) {
+        response.headers = {
+          ...response.headers,
+          'Access-Control-Allow-Origin': '*'
+        }
+      },
+      onUnhandledError (_event, error) {
+        if (error instanceof Error) {
+          return {
+            statusCode: 400,
+            headers: {},
+            body: JSON.stringify({
+              error: error.message
+            })
+          }
+        }
+        return {
+          statusCode: 500,
+          headers: {},
+          body: '{}'
+        }
+      },
+      onEvent () {
+        throw new Error('Error at onEvent!')
+      }
+    }
+  })
+
+  const handler = endpoint(schema, async (event, context) => {
+    return context.createResponse({
+      body: {
+        b: JSON.stringify({
+          ...event.body,
+          ...event.headers,
+          ...event.query
+        })
+      },
+      headers: {
+        h: 'response header'
+      }
+    })
+  })
+
+  it('should be catch in onUnhandledError', async () => {
+    const context = {
+      awsRequestId: 'aws-request-id'
+    } as Context
+
+    const response = await handler({
+      queryStringParameters: {
+        q: 'q'
+      },
+      body: JSON.stringify({
+        b: 0
+      }),
+      headers: {
+        h: 'h'
+      }
+    } as unknown as APIGatewayProxyEvent, context)
+
+    expect(response.statusCode).toBe(400)
+    expect(JSON.parse(response.body)).toStrictEqual({
+      error: 'Error at onEvent!'
+    })
+  })
+
+  it('should be pass to the onResult', async () => {
+    const context = {
+      awsRequestId: 'aws-request-id'
+    } as Context
+
+    const response = await handler({
+      queryStringParameters: {
+        q: 'q'
+      },
+      body: JSON.stringify({
+        b: 0
+      }),
+      headers: {
+        h: 'h'
+      }
+    } as unknown as APIGatewayProxyEvent, context)
+
+    expect(response.headers).toHaveProperty('Access-Control-Allow-Origin')
+  })
+})

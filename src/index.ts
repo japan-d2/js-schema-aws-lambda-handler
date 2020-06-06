@@ -95,6 +95,21 @@ export function endpointFactory <EventOuter, EventInner, ResultOuter> (
     const { callbacks } = options
     const validate = options.validate !== false
 
+    const trapUnhandledError = async (
+      event: EventInner,
+      error: unknown
+    ): Promise<ResultOuter> => {
+      if (callbacks.onUnhandledError) {
+        const result = await callbacks.onUnhandledError(event, error, schema)
+        if (callbacks.onResult) {
+          callbacks.onResult(event, result, schema)
+        }
+        return result
+      } else {
+        throw error
+      }
+    }
+
     const trapResult = async (
       event: EventInner,
       handler: () => Promise<ResultOuter>
@@ -108,11 +123,7 @@ export function endpointFactory <EventOuter, EventInner, ResultOuter> (
 
         return result
       } catch (error) {
-        if (callbacks.onUnhandledError) {
-          return callbacks.onUnhandledError(event, error, schema)
-        } else {
-          throw error
-        }
+        return trapUnhandledError(event, error)
       }
     }
 
@@ -124,11 +135,7 @@ export function endpointFactory <EventOuter, EventInner, ResultOuter> (
         try {
           callbacks.onEvent(event, rawContext, schema)
         } catch (error) {
-          if (callbacks.onUnhandledError) {
-            return callbacks.onUnhandledError(event, error, schema)
-          } else {
-            throw error
-          }
+          return trapUnhandledError(event, error)
         }
       }
 
