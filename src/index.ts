@@ -6,8 +6,6 @@ import { ValidationError } from 'jsonschema'
 // eslint-disable-next-line node/no-extraneous-import
 import { Context } from 'aws-lambda'
 
-type AnyObject = Record<string, unknown>
-
 export type CustomContext<ResultInner, ResultOuter> = Context & {
   createResponse (input: ResultInner): ResultOuter;
 }
@@ -53,9 +51,9 @@ type Options <EventInner, ResultOuter> = Partial<Settings<EventInner, ResultOute
 type EndpointReturns <EventOuter, ResultOuter> = OutsideHandler<EventOuter, ResultOuter>
 
 interface Endpoint <
-  EventOuter = AnyObject,
-  EventInner = AnyObject,
-  ResultOuter = AnyObject,
+  EventOuter = unknown,
+  EventInner = unknown,
+  ResultOuter = unknown,
   O = Options<EventInner, ResultOuter>
 > {
   <EventSchema, ResultInner> (
@@ -91,7 +89,7 @@ export function endpointFactory <EventOuter, EventInner, ResultOuter> (
 
     const options = {
       ...(defaultSettings || {}),
-      ...(args.length === 2 ? (args.shift() as AnyObject) : {})
+      ...(args.length === 2 ? (args.shift() as Record<string, unknown>) : {})
     } as Settings<EventInner, ResultOuter> & { validate?: false }
 
     const { callbacks } = options
@@ -141,7 +139,7 @@ export function endpointFactory <EventOuter, EventInner, ResultOuter> (
         }
       }
 
-      const context: CustomContext<AnyObject, ResultOuter> = {
+      const context: CustomContext<unknown, ResultOuter> = {
         ...rawContext,
         createResponse: settings.resultBuilder
       }

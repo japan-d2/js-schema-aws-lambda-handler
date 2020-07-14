@@ -324,17 +324,17 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@japan-d2/schema-api-endpoint@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@japan-d2/schema-api-endpoint/-/schema-api-endpoint-0.2.0.tgz#53694d8a2cfc6e2775260b3be19bc42e61d41d84"
-  integrity sha512-K5CE3ZVgT6HdzPEZjYJIeXcDlwYe9vVteW57PgXypQ6u7U3kLntHOGHqP2TJmVhs8tM5RWESkShAepQvmIMZUw==
+"@japan-d2/schema-api-endpoint@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@japan-d2/schema-api-endpoint/-/schema-api-endpoint-0.3.0.tgz#b706be1e39bd66d3d50c2fa4a2632d04a0ed2a7d"
+  integrity sha512-zXO4OA5pkQ32FtHOcQzAFvfdHvzdRvhInPFcw3EQlVmmBGWL8r3aTkXXj+1btE4OdmA5nesY1gXFmdMg3xmXaw==
   dependencies:
-    "@japan-d2/schema" "^0.4.1"
+    "@japan-d2/schema" "^0.5.1"
 
-"@japan-d2/schema@^0.4.1":
-  version "0.4.1"
-  resolved "https://registry.yarnpkg.com/@japan-d2/schema/-/schema-0.4.1.tgz#fd2621b2d0ad5f5f114aab81fc66d7903a4037e4"
-  integrity sha512-yxK/lApYUiXIEyNkJQ+a8UwL/DcTZWhWL3B7J8/6qodGr7Njx5sBlIW5XazPeBxTxcLdhJzFudHGmlDbVZZ10w==
+"@japan-d2/schema@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@japan-d2/schema/-/schema-0.5.1.tgz#db311c77b7b2a9c9d6dc0ea08256c469276348a2"
+  integrity sha512-hG3xRogkzwxL4A7ufeboUGXJAirs+UgprsMnqBmvkUHXvkAc8BMKRaKDuZFRjwDlg/K9NceQHEkLknf8jtBk9g==
   dependencies:
     json-schema "^0.2.5"
     jsonschema "^1.2.5"
