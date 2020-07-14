@@ -324,10 +324,10 @@
   resolved "https://registry.yarnpkg.com/@istanbuljs/schema/-/schema-0.1.2.tgz#26520bf09abe4a5644cd5414e37125a8954241dd"
   integrity sha512-tsAQNx32a8CoFhjhijUIhI4kccIAgmGhy8LZMZgGfmXcpMbPRUqn5LWmgRttILi6yeGmBJd2xsPkFMs0PzgPCw==
 
-"@japan-d2/schema-api-endpoint@^0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@japan-d2/schema-api-endpoint/-/schema-api-endpoint-0.3.0.tgz#b706be1e39bd66d3d50c2fa4a2632d04a0ed2a7d"
-  integrity sha512-zXO4OA5pkQ32FtHOcQzAFvfdHvzdRvhInPFcw3EQlVmmBGWL8r3aTkXXj+1btE4OdmA5nesY1gXFmdMg3xmXaw==
+"@japan-d2/schema-api-endpoint@^0.3.1":
+  version "0.3.1"
+  resolved "https://registry.yarnpkg.com/@japan-d2/schema-api-endpoint/-/schema-api-endpoint-0.3.1.tgz#8ae545ab3d4b8c9438aed155989ccd015fee2dc8"
+  integrity sha512-0OqRaekn4E7QHCqR3FU5M69Yvf+IiayUH8BLFy7oPCgb6ys+6MMVoA80N+A3Xrcs3ejA46aSNM/B7xx7Jovf2Q==
   dependencies:
     "@japan-d2/schema" "^0.5.1"
 
