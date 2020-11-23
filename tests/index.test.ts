@@ -97,6 +97,8 @@ describe('standard endpoint', () => {
     expect(JSON.parse(response.body)).toStrictEqual({
       error: {
         property: 'instance.body.b',
+        instance: 0,
+        path: ['body', 'b'],
         message: 'is not of a type(s) string',
         schema: {
           type: 'string'
@@ -169,6 +171,8 @@ describe('endpoint with custom error handler', () => {
     expect(JSON.parse(response.body)).toStrictEqual({
       error: {
         property: 'instance.body.b',
+        instance: 0,
+        path: ['body', 'b'],
         message: 'is not of a type(s) string',
         schema: {
           type: 'string'
