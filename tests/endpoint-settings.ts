@@ -16,7 +16,7 @@ type ResultInputType = {
 
 type ParameterType = {
   body: unknown;
-  query: Record<string, string>;
+  query: Record<string, string | undefined>;
 }
 
 function eventModifier (event: InputType): Omit<InputType, 'body'> & ParameterType {
