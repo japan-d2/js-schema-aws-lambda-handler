@@ -5,6 +5,7 @@ import { endpointSchema } from '@japan-d2/schema-api-endpoint'
 import { endpointFactory } from '../src'
 
 import endpointSettings from './endpoint-settings'
+import { unityAddressableCatalogSchema } from './realworld-schema'
 
 const schema = endpointSchema({
   summary: 'test',
@@ -275,4 +276,27 @@ describe('handle error in custom error handler', () => {
 
     expect(response.headers).toHaveProperty('Access-Control-Allow-Origin')
   })
+})
+
+it('type check', () => {
+  const { publishContents: schema } = unityAddressableCatalogSchema
+
+  const handler = endpointBase(schema, async (event, context) => {
+    const ios = event.body.catalog.ios
+
+    // @ts-expect-error m_LocatorId is string
+    ios.m_LocatorId = 1
+
+    return context.createResponse({
+      body: {
+        ok: 1
+      }
+    })
+  })
+
+  if (Math.E < 0) {
+    handler({} as any, {} as any)
+  }
+
+  expect(true)
 })

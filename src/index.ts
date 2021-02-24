@@ -15,13 +15,13 @@ export type InnerHandler<EventInner, ResultInner, ResultOuter> = (
   context: CustomContext<ResultInner, ResultOuter>,
 ) => Promise<ResultOuter>;
 
-type PureInnerHandler<EventSchema, ResultInner, EventInner, ResultOuter> = InnerHandler<
+export type PureInnerHandler<EventSchema, ResultInner, EventInner, ResultOuter> = InnerHandler<
   EventInner & Pure<SchemaDefinition<EventSchema>>,
   ResultInner,
   ResultOuter
 >
 
-type DirtyInnerHandler<EventSchema, ResultInner, EventInner, ResultOuter> = InnerHandler<
+export type DirtyInnerHandler<EventSchema, ResultInner, EventInner, ResultOuter> = InnerHandler<
   EventInner & Dirty<SchemaDefinition<EventSchema>>,
   ResultInner,
   ResultOuter
@@ -48,7 +48,7 @@ type Settings <EventInner, ResultOuter> = {
 
 type Options <EventInner, ResultOuter> = Partial<Settings<EventInner, ResultOuter>>
 
-type EndpointReturns <EventOuter, ResultOuter> = OutsideHandler<EventOuter, ResultOuter>
+export type EndpointReturns <EventOuter, ResultOuter> = OutsideHandler<EventOuter, ResultOuter>
 
 interface Endpoint <
   EventOuter = unknown,
